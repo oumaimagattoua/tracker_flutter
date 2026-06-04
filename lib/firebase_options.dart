@@ -17,17 +17,11 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
@@ -73,4 +67,23 @@ class DefaultFirebaseOptions {
     storageBucket: 'tracker-flutter-253f5.firebasestorage.app',
     measurementId: 'G-M33XGFV5JB',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCIJHAKjb_9rijVNP195Ceov87t6TJTYLs',
+    appId: '1:261451785542:web:23872d09e01ba58b1c7147',
+    messagingSenderId: '261451785542',
+    projectId: 'tracker-flutter-253f5',
+    authDomain: 'tracker-flutter-253f5.firebaseapp.com',
+    storageBucket: 'tracker-flutter-253f5.firebasestorage.app',
+    measurementId: 'G-M33XGFV5JB',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAWb_t_a7DwxCL2hpntil-_LlyvpCGL-ko',
+    appId: '1:261451785542:android:693dcbf02a6c59171c7147',
+    messagingSenderId: '261451785542',
+    projectId: 'tracker-flutter-253f5',
+    storageBucket: 'tracker-flutter-253f5.firebasestorage.app',
+  );
+
 }

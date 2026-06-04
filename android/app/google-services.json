@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "261451785542",
+    "project_id": "tracker-flutter-253f5",
+    "storage_bucket": "tracker-flutter-253f5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261451785542:android:693dcbf02a6c59171c7147",
+        "android_client_info": {
+          "package_name": "esisa.ac.ma.tracker_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWb_t_a7DwxCL2hpntil-_LlyvpCGL-ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

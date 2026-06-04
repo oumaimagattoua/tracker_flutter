@@ -1,0 +1,8 @@
+import 'package:tracker_flutter/features/auth/domain/app_user.dart';
+
+abstract class AuthRepository {
+  Future<AppUser?> signInWithEmailAndPassword(String email, String password);
+  Future<AppUser?> createUserWithEmailAndPassword(String email, String password, String displayName);
+  Future<void> signOut();
+  Stream<AppUser?> authStateChanges();
+}
