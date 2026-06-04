@@ -17,7 +17,11 @@ class DashboardScreen extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () => context.push('/fuel'),
-            icon: const Icon(Icons.history),
+            icon: const Icon(Icons.local_gas_station),
+          ),
+          IconButton(
+            onPressed: () => context.push('/maintenance'),
+            icon: const Icon(Icons.build),
           ),
           IconButton(
             onPressed: () => ref.read(authControllerProvider.notifier).logout(),
@@ -48,10 +52,20 @@ class DashboardScreen extends ConsumerWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton.icon(
-              onPressed: () => context.push('/fuel/add'),
-              icon: const Icon(Icons.local_gas_station),
-              label: const Text('Enregistrer un plein'),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () => context.push('/fuel/add'),
+                  icon: const Icon(Icons.local_gas_station),
+                  label: const Text('Plein'),
+                ),
+                ElevatedButton.icon(
+                  onPressed: () => context.push('/maintenance/add'),
+                  icon: const Icon(Icons.build),
+                  label: const Text('Maintenance'),
+                ),
+              ],
             ),
           ),
         ],
