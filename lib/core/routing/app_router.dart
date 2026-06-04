@@ -4,6 +4,8 @@ import 'package:tracker_flutter/features/auth/application/auth_service.dart';
 import 'package:tracker_flutter/features/auth/presentation/screens/login_screen.dart';
 import 'package:tracker_flutter/features/auth/presentation/screens/register_screen.dart';
 import 'package:tracker_flutter/features/dashboard/presentation/dashboard_screen.dart';
+import 'package:tracker_flutter/features/fuel/presentation/add_fuel_entry_screen.dart';
+import 'package:tracker_flutter/features/fuel/presentation/fuel_entry_list_screen.dart';
 import 'package:tracker_flutter/features/vehicle/presentation/add_vehicle_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -39,8 +41,16 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const RegisterScreen(),
       ),
       GoRoute(
-        path: '/add-vehicle',
+        path: '/vehicles/add',
         builder: (context, state) => const AddVehicleScreen(),
+      ),
+      GoRoute(
+        path: '/fuel',
+        builder: (context, state) => const FuelEntryListScreen(),
+      ),
+      GoRoute(
+        path: '/fuel/add',
+        builder: (context, state) => const AddFuelEntryScreen(),
       ),
     ],
   );
