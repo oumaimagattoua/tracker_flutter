@@ -1,0 +1,31 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /drivers/{driverId} {
+      allow read, write: if request.auth != null
+                         && request.auth.uid == driverId;
+
+      match /vehicles/{vehicleId} {
+        allow read, write: if request.auth != null
+                           && request.auth.uid == driverId;
+      }
+
+      match /fuelEntries/{fuelEntryId} {
+        allow read, write: if request.auth != null
+                           && request.auth.uid == driverId;
+      }
+
+      match /maintenanceCategories/{categoryId} {
+        allow read, write: if request.auth != null
+                           && request.auth.uid == driverId;
+      }
+
+      match /maintenances/{maintenanceId} {
+        allow read, write: if request.auth != null
+                           && request.auth.uid == driverId;
+      }
+    }
+  }
+}
