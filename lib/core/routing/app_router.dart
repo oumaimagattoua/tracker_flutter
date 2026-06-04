@@ -4,6 +4,7 @@ import 'package:tracker_flutter/features/auth/application/auth_service.dart';
 import 'package:tracker_flutter/features/auth/presentation/screens/login_screen.dart';
 import 'package:tracker_flutter/features/auth/presentation/screens/register_screen.dart';
 import 'package:tracker_flutter/features/dashboard/presentation/dashboard_screen.dart';
+import 'package:tracker_flutter/features/vehicle/presentation/add_vehicle_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authStateProvider);
@@ -36,6 +37,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/register',
         builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: '/add-vehicle',
+        builder: (context, state) => const AddVehicleScreen(),
       ),
     ],
   );

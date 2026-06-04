@@ -1,26 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tracker_flutter/features/auth/application/auth_service.dart';
+import 'package:tracker_flutter/features/vehicle/application/vehicle_service.dart';
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final vehiclesAsync = ref.watch(vehiclesStreamProvider);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: const Text('Mes Véhicules'),
         actions: [
           IconButton(
-            onPressed: () {
-              ref.read(authControllerProvider.notifier).logout();
-            },
+            onPressed: () => ref.read(authControllerProvider.notifier).logout(),
             icon: const Icon(Icons.logout),
           ),
         ],
       ),
-      body: const Center(
-        child: Text('Bienvenue sur Tracker Flutter'),
+      body: vehiclesAsync.when(
+        data: (vehicles) => vehicles.isEmpty
+            ? const Center(child: Text('Aucun véhicule enregistré.'))
+            : ListView.builder(
+                itemCount: vehicles.length,
+                itemBuilder: (context, index) {
+                  final vehicle = vehicles[index];
+                  return ListTile(
+                    title: Text(vehicle.name),
+                    subtitle: Text('${vehicle.brand} ${vehicle.model} - ${vehicle.plateNumber}'),
+                    trailing: Text('${vehicle.currentMileage} km'),
+                  );
+                },
+              ),
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (e, st) => Center(child: Text('Erreur: $e')),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.push('/add-vehicle'),
+        child: const Icon(Icons.add),
       ),
     );
   }
